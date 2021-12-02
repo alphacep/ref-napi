@@ -1,5 +1,5 @@
 {
-  "name": "ref-napi",
+  "name": "@alphacep/ref-napi",
   "description": "Turn Buffer instances into \"pointers\"",
   "engines": {
     "node": ">= 10.0"
@@ -21,7 +21,7 @@
     "64",
     "napi"
   ],
-  "version": "4.0.0",
+  "version": "4.0.1",
   "license": "MIT",
   "author": "Anna Henningsen <anna@addaleax.net>",
   "repository": {
@@ -34,10 +34,11 @@
     "test": "nyc mocha --expose-gc",
     "install": "node-gyp-build",
     "prebuild": "prebuildify --napi --tag-armv",
-    "prepack": "prebuildify-ci download && ([ $(ls prebuilds | wc -l) = '5' ] || (echo 'Some prebuilds are missing'; exit 1))"
+    "prepack": "npm run prebuild && ([ $(ls prebuilds | wc -l) = '5' ] || (echo 'Some prebuilds are missing'; exit 1))"
   },
   "dependencies": {
-    "debug": "^4.3.1"
+    "debug": "^4.3.1",
+    "node-gyp-build": "^4.2.1"
   },
   "devDependencies": {
     "dox": "0.9.0",
@@ -46,7 +47,6 @@
     "marked": "^1.0.0",
     "mocha": "^8.4.0",
     "node-addon-api": "^3.0.0",
-    "node-gyp-build": "^4.2.1",
     "nyc": "^15.0.0",
     "prebuildify": "^4.1.2",
     "prebuildify-ci": "^1.0.5",

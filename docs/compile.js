@@ -5,7 +5,7 @@
 
 var fs = require('fs')
 var dox = require('dox')
-var jade = require('jade')
+var jade = require('pug')
 var marked = require('marked')
 var hljs = require('highlight.js')
 var assert = require('assert')
@@ -146,8 +146,8 @@ function markdown (code) {
  */
 
 function highlight (code, lang) {
-  if (!hljs.LANGUAGES.hasOwnProperty(lang)) {
+  if (!hljs.listLanguages().hasOwnProperty(lang)) {
     lang = 'javascript'
   }
-  return hljs.highlight(lang, code).value
+  return hljs.highlight(code, { language: lang }).value
 }
